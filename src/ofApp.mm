@@ -16,21 +16,9 @@ void ofApp::setup(){
     bTakenPhoto = false;
     myScene = ready;
     
-    // this is for ready screen. Gives you two lines of "title-like" fonts
-    ofxTextParticle titleParticle;
-    titleParticle.setup("Morph", ofPoint(ofGetWidth()/2., ofGetHeight()*3/7.));
-    titles.push_back(titleParticle);
-    
-    ofxTextParticle titleParticle2;
-    titleParticle2.setup("Dat Face", ofPoint(ofGetWidth()/2., ofGetHeight()*4/7.));
-    titles.push_back(titleParticle2);
-    
-    font.loadFont("Sketch_Block.ttf", 15);
-    
     // gui set up
     guiViewController = [[GuiViewController alloc]initWithNibName:@"GuiViewController" bundle:nil];
     [ofxiOSGetGLParentView() addSubview:guiViewController.view];
-    guiViewController.view.hidden = YES;
 }
 
 //--------------------------------------------------------------
@@ -40,37 +28,6 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if(myScene == ready){
-        // background
-        backgoundImage.draw(0, 0, ofGetWidth(), ofGetHeight());
-        ofPushStyle();
-        
-        ofSetColor(0, 0, 0, 180);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
-        
-        ofPopStyle();
-        
-        // titles drawing (the strings that you defined above in setup) with "noise" effect on the font
-        for(int i=0;i<titles.size();i++)
-            titles[i].noiseDraw();
-        
-        // start string
-        ofPushStyle();
-        
-        ofSetColor(255, 255, 255, 255*abs(sin(ofGetFrameNum()*0.05)));
-        string tapToStart = "double-tap to start";
-        font.drawString(tapToStart, ofGetWidth()/2. - font.stringWidth(tapToStart)/2., ofGetHeight()*5/7 - font.stringHeight(tapToStart)/2. +100);
-        ofPopStyle();
-    }
-    else {
-        // background
-        backgoundImage.draw(0, 0, ofGetWidth(), ofGetHeight());
-        ofPushStyle();
-        
-        ofSetColor(0, 0, 0, 180);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
-        ofPopStyle();
-    }
     
 }
 
@@ -81,9 +38,7 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    changeMesh();
-    guiViewController.view.hidden = NO;
-    
+
 }
 
 //--------------------------------------------------------------
@@ -141,12 +96,15 @@ void ofApp::setMaskFaceTracker(){
     string url;
     if (guiViewController.faceSelectionControl) {
         if (guiViewController.faceSelectionControl == BeardImage) {
+            NSLog(@"going with BEARD");
             url =  "beard.jpg";
         }
         else if (guiViewController.faceSelectionControl == WomanImage) {
+            NSLog(@"going with WOMAN");
             url = "woman.jpg";
         }
         else if (guiViewController.faceSelectionControl == AvatarImage) {
+            NSLog(@"going with AVATAR");
             url = "avatar.jpg";
         }
     }
@@ -170,7 +128,6 @@ void ofApp::setMaskFaceTracker(){
 void ofApp::maskTakenPhoto(ofImage &input){
     
     //Input variable refers to our "just taken photo, your face, from the camera"
-    
     setMaskFaceTracker();
     // change image type. OF_IMAGE_COLOR_ALPHA => OF_IMAGE_COLOR
     if(input.type == OF_IMAGE_COLOR_ALPHA){
@@ -236,22 +193,5 @@ void ofApp::drawMaskOnInput(ofImage &input){
     }
     else{
         maskedImage = input;
-    }
-}
-
-
-
-#pragma mark - titleMesh
-void ofApp::changeMesh(){
-    titleMesh.clear();
-    for (int i=0; i<originalTitleMesh.getVertices().size(); i++) {
-        titleMesh.addVertex(originalTitleMesh.getVertices()[i]);
-    }
-    for(int i=0;i<originalTitleMesh.getIndices().size()/3;i++){
-        if(ofRandom(1.0) < 0.3){
-            titleMesh.addIndex(originalTitleMesh.getIndices()[i*3]);
-            titleMesh.addIndex(originalTitleMesh.getIndices()[i*3+1]);
-            titleMesh.addIndex(originalTitleMesh.getIndices()[i*3+2]);
-        }
     }
 }

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-               BuildableName = "TBFaceMorpher.app"
-               BlueprintName = "TBFaceMorpher"
-               ReferencedContainer = "container:TBFaceMorpher.xcodeproj">
+               BuildableName = "TBVideoMerger.app"
+               BlueprintName = "TBVideoMerger"
+               ReferencedContainer = "container:TBVideoMerger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "TBFaceMorpher.app"
-            BlueprintName = "TBFaceMorpher"
-            ReferencedContainer = "container:TBFaceMorpher.xcodeproj">
+            BuildableName = "TBVideoMerger.app"
+            BlueprintName = "TBVideoMerger"
+            ReferencedContainer = "container:TBVideoMerger.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "TBFaceMorpher.app"
-            BlueprintName = "TBFaceMorpher"
-            ReferencedContainer = "container:TBFaceMorpher.xcodeproj">
+            BuildableName = "TBVideoMerger.app"
+            BlueprintName = "TBVideoMerger"
+            ReferencedContainer = "container:TBVideoMerger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "TBFaceMorpher.app"
-            BlueprintName = "TBFaceMorpher"
-            ReferencedContainer = "container:TBFaceMorpher.xcodeproj">
+            BuildableName = "TBVideoMerger.app"
+            BlueprintName = "TBVideoMerger"
+            ReferencedContainer = "container:TBVideoMerger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
